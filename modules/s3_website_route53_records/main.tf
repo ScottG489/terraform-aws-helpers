@@ -1,9 +1,5 @@
-resource "aws_route53_zone" "website_r53_zone" {
-  name = var.name
-}
-
 resource "aws_route53_record" "website_r53_record_A_top" {
-  zone_id = aws_route53_zone.website_r53_zone.id
+  zone_id = var.route53_zone_id
   name    = ""
   type    = "A"
 
@@ -15,7 +11,7 @@ resource "aws_route53_record" "website_r53_record_A_top" {
 }
 
 resource "aws_route53_record" "website_record_A_www" {
-  zone_id = aws_route53_zone.website_r53_zone.id
+  zone_id = var.route53_zone_id
   name    = "www"
   type    = "A"
 
