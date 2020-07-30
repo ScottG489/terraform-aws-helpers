@@ -7,6 +7,7 @@ resource "aws_spot_instance_request" "spot_instance_request" {
   spot_type = var.spot_type
   spot_price    = var.spot_price
   wait_for_fulfillment = true
+  valid_until = "2100-01-01T00:00:00Z"
 
   root_block_device {
     volume_type           = "gp2"
