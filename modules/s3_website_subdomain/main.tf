@@ -15,7 +15,7 @@ resource "aws_route53_record" "website_record_A_www" {
   type    = "A"
 
   alias {
-    zone_id                = var.s3_website_hosted_zone_id
+    zone_id                = aws_s3_bucket.website_bucket.hosted_zone_id
     name                   = "s3-website-us-west-2.amazonaws.com"
     evaluate_target_health = false
   }
