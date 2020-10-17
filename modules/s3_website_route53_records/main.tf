@@ -12,7 +12,7 @@ resource "aws_route53_record" "website_r53_record_A_top" {
 
 resource "aws_route53_record" "website_record_A_www" {
   zone_id = var.route53_zone_id
-  name    = "www"
+  name    = var.subdomain
   type    = "A"
 
   alias {
