@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.name
+  bucket = var.bucket_name
   acl    = "public-read"
-  policy = templatefile("${path.module}/policy-template.json", { bucket_name: var.name })
+  policy = templatefile("${path.module}/policy-template.json", { bucket_name: var.bucket_name })
   force_destroy = true
 
   website {
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "website_bucket" {
   }
 }
 
-resource "aws_route53_record" "website_record_A_www" {
+resource "aws_route53_record" "website_record_A" {
   zone_id = var.route53_zone_id
   name    = var.subdomain
   type    = "A"
