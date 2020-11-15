@@ -1,7 +1,7 @@
 variable "name" { }
 variable "ami" {
   type = string
-  default = "www"
+  default = "ami-09dd2e08d601bff67"
 }
 variable "instance_type" {}
 variable "spot_type" {}
