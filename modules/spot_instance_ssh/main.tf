@@ -1,5 +1,5 @@
 resource "aws_spot_instance_request" "spot_instance_request" {
-  ami           = "ami-09dd2e08d601bff67"
+  ami           = var.ami
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.security_group.id]
   key_name = aws_key_pair.key_pair.key_name
