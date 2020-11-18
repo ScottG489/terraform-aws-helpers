@@ -11,6 +11,7 @@ resource "aws_spot_instance_request" "spot_instance_request" {
 
   root_block_device {
     volume_type           = "gp2"
+    // This doesn't do the resize but I'm leaving it. The update_instance_volume_size.sh is a workaround.
     volume_size           = var.volume_size
   }
 
@@ -20,6 +21,10 @@ resource "aws_spot_instance_request" "spot_instance_request" {
 
   provisioner "local-exec" {
     command = "${path.module}/scripts/create_instance_tag.sh ${aws_spot_instance_request.spot_instance_request.spot_instance_id} ${var.name}"
+  }
+
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/update_instance_volume_size.sh ${aws_spot_instance_request.spot_instance_request.spot_instance_id} ${var.volume_size}"
   }
 }
 
