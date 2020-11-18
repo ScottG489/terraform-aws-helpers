@@ -22,7 +22,17 @@ resource "aws_spot_instance_request" "spot_instance_request" {
   provisioner "local-exec" {
     command = "${path.module}/scripts/create_instance_tag.sh ${aws_spot_instance_request.spot_instance_request.spot_instance_id} ${var.name}"
   }
+}
 
+resource "null_resource" "aws_spot_instance_volume_size" {
+  triggers = {
+    volume_size = var.volume_size
+  }
+
+  // TODO: This runs the first time and even though it's the same size it ends up running successfully.
+  // TODO:   This means that it will then kick off the "optimize import" for the volume. It also means that
+  // TODO:   you won't be able to update the volume size for another 6 hours. This could be fixed by manually
+  // TODO:   checking if the size is the same as the current size and if so do nothing.
   provisioner "local-exec" {
     command = "${path.module}/scripts/update_instance_volume_size.sh ${aws_spot_instance_request.spot_instance_request.spot_instance_id} ${var.volume_size}"
   }
