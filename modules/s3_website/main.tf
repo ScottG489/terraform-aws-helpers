@@ -13,6 +13,6 @@ resource "aws_s3_bucket" "www_website_bucket" {
     bucket = "${var.subdomain}.${var.name}"
 
     website {
-        redirect_all_requests_to = aws_s3_bucket.website_bucket.bucket
+        redirect_all_requests_to = "${var.subdomain_redirect_protocol}://${aws_s3_bucket.website_bucket.bucket}"
     }
 }
