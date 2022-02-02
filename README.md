@@ -1,4 +1,8 @@
 # terraform-aws-helpers
+[![](https://img.shields.io/github/v/tag/scottg489/terraform-aws-helpers)](https://github.com/ScottG489/terraform-aws-helpers/tags)
+
+
+
 Helper modules for my projects
 
 ## Development
