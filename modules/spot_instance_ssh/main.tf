@@ -5,6 +5,7 @@ resource "aws_spot_instance_request" "spot_instance_request" {
   key_name = aws_key_pair.key_pair.key_name
 
   spot_type = var.spot_type
+  instance_interruption_behavior = var.instance_interruption_behavior
   spot_price    = var.spot_price
   wait_for_fulfillment = true
   valid_until = "2100-01-01T00:00:00Z"

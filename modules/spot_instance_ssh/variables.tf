@@ -4,6 +4,7 @@ variable "ami" {
   default = "ami-09dd2e08d601bff67"
 }
 variable "instance_type" {}
+variable "instance_interruption_behavior" {}
 variable "spot_type" {}
 variable "spot_price" {}
 variable "public_key" {}
