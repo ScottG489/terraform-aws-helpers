@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "www_website_bucket" {
 }
 
 resource "aws_s3_bucket_website_configuration" "www_website_bucket" {
-  bucket = aws_s3_bucket.website_bucket.id
+  bucket = aws_s3_bucket.www_website_bucket.id
   redirect_all_requests_to {
     host_name = aws_s3_bucket.website_bucket.bucket
     protocol = var.subdomain_redirect_protocol
