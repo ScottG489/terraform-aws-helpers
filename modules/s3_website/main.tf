@@ -16,7 +16,7 @@ resource "aws_s3_bucket_acl" "website_bucket" {
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket_policy" "example" {
+resource "aws_s3_bucket_policy" "website_bucket" {
   bucket = aws_s3_bucket.website_bucket.id
   policy = templatefile("${path.module}/policy-template.json", { bucket_name: var.name })
 }
