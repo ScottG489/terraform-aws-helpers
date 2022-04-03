@@ -9,5 +9,5 @@ variable "subdomain" {
 
 variable "subdomain_redirect_protocol" {
   type = string
-  default = ""
+  default = "http"
 }
